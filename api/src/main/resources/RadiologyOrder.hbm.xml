@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="org.openmrs.module.radiology.api.model.RadiologyOrder" extends="org.openmrs.Order" table="radiology_order" lazy="false">
+        <key column="order_id" not-null="true" on-delete="cascade" />
+        <many-to-one name="bodySite" class="org.openmrs.Concept" column="body_site" />
+        <many-to-one name="modality" class="org.openmrs.Concept" column="modality" />
+        <many-to-one name="specimenSource" class="org.openmrs.Concept" column="specimen_source" />
+        <many-to-one name="specimenType" class="org.openmrs.Concept" column="specimen_type" />
+        <property name="laterality" column="laterality" length="20" not-null="false">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.openmrs.ServiceOrder$Laterality</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="clinicalHistory" type="java.lang.String" column="clinical_history" length="65535" />
+        <property name="numberOfRepeats" type="int" column="number_of_repeats"/>
+        <property name="radiologyStatus" column="radiology_status">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.openmrs.module.radiology.api.enums.RadiologyOrderStatus</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <many-to-one name="frequency" class="org.openmrs.OrderFrequency" />
+        <many-to-one name="location" class="org.openmrs.Concept" />
+        <many-to-one name="relatedRadiologyOrder" class="org.openmrs.module.radiology.api.model.RadiologyOrder"  column="related_radiology_order_id"/>
+    </joined-subclass>
+</hibernate-mapping>
