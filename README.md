@@ -41,13 +41,4 @@ We welcome contributions to the Radiology Module! Please follow these steps to c
 5. Create a pull request to the main repository.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contact
-For any inquiries or support, please contact:
-- **Name:** Dipak
-- **Email:** [dipakthapa@trigonaltechnology.com](mailto:dipakthapa@trigonaltechnology.com)
-
-## Acknowledgments
-- OpenMRS Community
-- Trigonal Technology
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details
